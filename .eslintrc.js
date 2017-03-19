@@ -24,6 +24,6 @@ module.exports = {
     'react',
   ],
   'env': {
-    'jest': true,
+    'browser': true,
   },
 }
