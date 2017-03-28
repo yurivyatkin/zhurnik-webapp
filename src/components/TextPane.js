@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ReactMarkdown from 'react-markdown'
 import TextInput from './TextInput'
+import { getCurrentNote, getPreviewMode } from '../store/notes/reducer'
 
 const TextPane = (props) => {
   if (props.isPreview) {
@@ -29,8 +30,8 @@ TextPane.propTypes = {
 
 function mapStateToProps (state, props) {
   return {
-    isPreview: state.isPreview,
-    textBuffer: state.note.content,
+    isPreview: getPreviewMode(state),
+    textBuffer: getCurrentNote(state).content,
   }
 }
 

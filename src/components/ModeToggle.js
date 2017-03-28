@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import store from '../store'
-import { toggleMode } from '../store/actions'
+import { toggleMode } from '../store/notes/actions'
+import { getPreviewMode } from '../store/notes/reducer'
 
 class ModeToggle extends React.Component {
   onToggle () {
@@ -27,7 +28,7 @@ ModeToggle.propTypes = {
 
 function mapStateToProps (state, props) {
   return {
-    checked: state.isPreview,
+    checked: getPreviewMode(state),
   }
 }
 

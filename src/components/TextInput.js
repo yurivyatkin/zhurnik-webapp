@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import store from '../store'
-import { changeNote } from '../store/actions'
+import { changeNote } from '../store/notes/actions'
+import { getCurrentNote } from '../store/notes/reducer'
 
 class TextInput extends React.Component {
   constructor (props) {
@@ -32,7 +33,7 @@ TextInput.propTypes = {
 
 function mapStateToProps (state, props) {
   return {
-    textBuffer: state.note.content,
+    textBuffer: getCurrentNote(state).content,
   }
 }
 

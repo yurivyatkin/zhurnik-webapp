@@ -1,20 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { showPage, setNote } from '../store/actions'
-import store from '../store'
 import NotePage from './NotePage'
 import './App.css'
 
 class App extends Component {
-  componentWillMount = () => {
-    const initialNote = {
-      date: '20170320',
-      content: 'This is my note!',
-    }
-    store.dispatch(setNote(initialNote))
-    store.dispatch(showPage('note'))
-  }
-
   render () {
     var page
 
@@ -39,7 +28,7 @@ App.propTypes = {
 
 function mapStateToProps (state, props) {
   return {
-    page: state.page,
+    page: state.pages.currentPage,
   }
 }
 

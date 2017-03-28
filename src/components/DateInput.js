@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import store from '../store'
-import { switchNote } from '../store/actions'
+import { switchNote } from '../store/notes/actions'
 
 const DateInput = (props) => {
   function handleInput (e) {
@@ -29,7 +29,7 @@ DateInput.propTypes = {
 
 function mapStateToProps (state, props) {
   return {
-    date: state.note.date,
+    date: state.notes.currentNote.date,
   }
 }
 
