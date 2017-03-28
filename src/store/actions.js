@@ -5,6 +5,10 @@ export const SET_NOTE = 'SET_NOTE' // Load the note's content
 export const SWITCH_NOTE = 'SWITCH_NOTE' // Load another note when the date is changed
 export const UPDATE_NOTE = 'UPDATE_NOTE' // Save the content to the server
 
+export const SHOW_PAGE = 'SHOW_PAGE' // Show a page component
+
+export const TOGGLE_MODE = 'TOGGLE_MODE' // Preview or edit
+
 export function changeNote (content) {
   return {
     type: CHANGE_NOTE,
@@ -54,4 +58,17 @@ export function updateNote (note) {
 
 function handleUpdateResponse () {
   // TODO
+}
+
+export function showPage (page) {
+  return {
+    type: SHOW_PAGE,
+    page,
+  }
+}
+
+export function toggleMode () {
+  return {
+    type: TOGGLE_MODE,
+  }
 }
