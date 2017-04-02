@@ -1,9 +1,17 @@
 import * as types from './actionTypes'
 
+function pad (n) {
+  return (n < 10) ? ('0' + n) : n
+}
+
+function getDateString (date) {
+  return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}`
+}
+
 const initialState = {
   currentNote: {
-    date: '20170328',
-    content: '# Hello!\n\nThis is *my* **note**!',
+    date: getDateString(new Date()),
+    content: '',
   },
   previewMode: false,
 }
