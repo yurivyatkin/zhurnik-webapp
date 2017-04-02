@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import store from '../store'
-import { switchNote } from '../store/notes/actions'
+import { fetchNote } from '../store/notes/actions'
 
 const DateInput = (props) => {
   function handleInput (e) {
     e.preventDefault()
     const newDate = document.getElementById('date_input').value
-    console.log(newDate)
-    store.dispatch(switchNote(newDate))
+    store.dispatch(fetchNote(newDate))
   }
 
   return (

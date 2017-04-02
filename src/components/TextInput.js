@@ -12,7 +12,6 @@ class TextInput extends React.Component {
 
   handleChange (event) {
     const newBuffer = event.target.value
-    console.log(newBuffer)
     store.dispatch(changeNote(newBuffer))
   }
 

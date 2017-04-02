@@ -1,4 +1,5 @@
 import * as types from './actionTypes'
+import notesService from '../../services/notes'
 
 export function changeNote (content) {
   return {
@@ -15,9 +16,9 @@ export function createNote (note) {
 }
 
 export function fetchNote (date) {
-  return dispatch => {
-    fetch(`/api/notes/${date}`)
-      .then(res => res.json())
+  return async (dispatch) => {
+    const note = await notesService.getNoteByDate(date)
+    dispatch(setNote(note))
   }
 }
 

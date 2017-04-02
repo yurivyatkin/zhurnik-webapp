@@ -14,7 +14,7 @@ mongodb.MongoClient.connect(dbUrl, function (err, db) {
   app.get('/api/notes/:date', (req, res) => {
     db.collection('notes').findOne({ date: req.params.date }, (err, note) => {
       if (err) { console.log(err) }
-      res.json({ note })
+      res.json(note)
     })
   })
 
