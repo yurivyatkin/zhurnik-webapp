@@ -1,16 +1,11 @@
 import * as types from './actionTypes'
+import { getDateString } from '../../lib/dateHelpers'
 
-function pad (n) {
-  return (n < 10) ? ('0' + n) : n
-}
-
-function getDateString (date) {
-  return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}`
-}
+const date = getDateString(new Date())
 
 const initialState = {
   currentNote: {
-    date: getDateString(new Date()),
+    date,
     content: '',
   },
   previewMode: false,
