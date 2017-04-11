@@ -1,0 +1,4 @@
+export const CHANGE_BUFFER = 'CHANGE_BUFFER'
+export const CLEAR_EDITED = 'CLEAR_EDITED'
+export const MARK_EDITED = 'MARK_EDITED'
+export const TOGGLE_PREVIEW = 'TOGGLE_PREVIEW'
