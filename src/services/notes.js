@@ -32,6 +32,14 @@ class NotesService {
     const data = await response.json()
     return data
   }
+
+  getNoteByDateFromLocalStorage (date) {
+    return window.localStorage.getItem(`zhurnik.${date}`) || ''
+  }
+
+  setNoteByDateToLocalStorage (date, content) {
+    window.localStorage.setItem(`zhurnik.${date}`, content)
+  }
 }
 
 export default new NotesService()
