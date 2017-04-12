@@ -16,5 +16,5 @@ export default function reducer (state = initialState, action = {}) {
 }
 
 export function getCurrentDate (state) {
-  return state.currentDate
+  return state.calendar.currentDate
 }

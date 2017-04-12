@@ -29,13 +29,13 @@ export default function reducer (state = initialState, action = {}) {
 }
 
 export function getCurrentBuffer (state) {
-  return state.currentBuffer
+  return state.editor.currentBuffer
 }
 
 export function isEdited (state) {
-  return state.isEdited
+  return state.editor.isEdited
 }
 
 export function isPreview (state) {
-  return state.isPreview
+  return state.editor.isPreview
 }
