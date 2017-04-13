@@ -1,39 +1,23 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import store from '../store'
-import { changeNote } from '../store/notes/actions'
-import { getCurrentNote } from '../store/notes/reducer'
 
-class TextInput extends React.Component {
-  constructor (props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange (event) {
+const TextInput = (props) => {
+  function handleChange (event) {
     const newBuffer = event.target.value
-    store.dispatch(changeNote(newBuffer))
+    props.changeBuffer(newBuffer)
   }
 
-  render () {
-    return (
-      <textarea
-        className='text_input'
-        onChange={this.handleChange}
-        value={this.props.textBuffer}
-      />
-    )
-  }
+  return (
+    <textarea
+      className='text_input'
+      onChange={handleChange}
+      value={props.currentBuffer}
+    />
+  )
 }
 
 TextInput.propTypes = {
-  textBuffer: React.PropTypes.string.isRequired,
+  changeBuffer: React.PropTypes.func.isRequired,
+  currentBuffer: React.PropTypes.string.isRequired,
 }
 
-function mapStateToProps (state, props) {
-  return {
-    textBuffer: getCurrentNote(state).content,
-  }
-}
-
-export default connect(mapStateToProps)(TextInput)
+export default TextInput

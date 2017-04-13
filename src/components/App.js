@@ -3,8 +3,8 @@ import notesService from '../services/notes'
 import { changeBuffer } from '../store/editor/actions'
 import { getCurrentDate } from '../store/calendar/reducer'
 import store from '../store'
-import Dashboard from './Dashboard'
-import TextPane from './TextPane'
+import Dashboard from '../containers/Dashboard'
+import Editor from '../containers/Editor'
 import './App.css'
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div>
         <Dashboard />
-        <TextPane />
+        <Editor />
       </div>
     )
   }
