@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import DateInput from '../components/DateInput'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import moment from 'moment'
 import PreviewToggle from '../components/PreviewToggle'
 import { changeDate } from '../store/calendar/actions'
 import { getCurrentDate } from '../store/calendar/reducer'
@@ -19,15 +21,17 @@ class Dashboard extends React.Component {
   }
 
   changeDate (date) {
-    this.props.dispatch(changeDate(date))
+    const dateString = moment(date).format('YYYYMMDD')
+    this.props.dispatch(changeDate(dateString))
   }
 
   render () {
     return (
       <div className='dashboard'>
-        <DateInput
-          changeDate={this.changeDate}
-          currentDate={this.props.currentDate}
+        <DatePicker
+          dateFormat='YYYYMMDD'
+          onChange={this.changeDate}
+          selected={moment(this.props.currentDate, 'YYYYMMDD')}
         />
         <PreviewToggle
           checked={this.props.isPreview}
