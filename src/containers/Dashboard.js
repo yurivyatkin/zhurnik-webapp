@@ -8,11 +8,18 @@ import { changeDate } from '../store/calendar/actions'
 import { getCurrentDate } from '../store/calendar/reducer'
 import { togglePreview } from '../store/editor/actions'
 import { isPreview } from '../store/editor/reducer'
+import notesService from '../services/notes'
 
 class Dashboard extends React.Component {
   constructor (props) {
     super(props)
+
+    this.state = {
+      month: this.props.currentDate.substring(0, 6) + '01',
+    }
+
     this.changeDate = this.changeDate.bind(this)
+    this.handleMonthChange = this.handleMonthChange.bind(this)
     this.togglePreview = this.togglePreview.bind(this)
   }
 
@@ -25,12 +32,26 @@ class Dashboard extends React.Component {
     this.props.dispatch(changeDate(dateString))
   }
 
+  handleMonthChange (momentDate) {
+    this.setState({
+      month: (moment(momentDate._d).format('YYYYMMDD')),
+    })
+  }
+
+  nonEmptyDatesInMonth (date) {
+    return notesService
+      .getListOfNonEmptyDatesInTheMonthFromLocalStorage(date)
+      .map((item) => (moment(item, 'YYYYMMDD')))
+  }
+
   render () {
     return (
       <div className='dashboard'>
         <DatePicker
           dateFormat='YYYYMMDD'
+          highlightDates={this.nonEmptyDatesInMonth(this.state.month)}
           onChange={this.changeDate}
+          onMonthChange={this.handleMonthChange}
           selected={moment(this.props.currentDate, 'YYYYMMDD')}
         />
         <PreviewToggle

@@ -40,6 +40,13 @@ class NotesService {
   setNoteByDateToLocalStorage (date, content) {
     window.localStorage.setItem(`zhurnik.${date}`, content)
   }
-}
 
+  getListOfNonEmptyDatesInTheMonthFromLocalStorage (date) {
+    return Object.keys(window.localStorage)
+      .filter((key) => (key.includes('zhurnik')))
+      .filter((key) => (window.localStorage.getItem(key).length !== 0))
+      .map((key) => (key.split('.')[1]))
+      .filter((item) => (item.substring(4, 6)) === date.substring(4, 6))
+  }
+}
 export default new NotesService()
