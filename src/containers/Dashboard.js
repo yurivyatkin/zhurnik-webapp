@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
-import PreviewToggle from '../components/PreviewToggle'
+import 'react-toggle/style.css'
+import Toggle from 'react-toggle'
 import { changeDate } from '../store/calendar/actions'
 import { getCurrentDate } from '../store/calendar/reducer'
 import { togglePreview } from '../store/editor/actions'
@@ -54,10 +55,15 @@ class Dashboard extends React.Component {
           onMonthChange={this.handleMonthChange}
           selected={moment(this.props.currentDate, 'YYYYMMDD')}
         />
-        <PreviewToggle
-          checked={this.props.isPreview}
-          togglePreview={this.togglePreview}
-        />
+        <label>
+          <span className='preview-label'>
+            {this.props.isPreview ? 'Edit' : 'Preview:'}
+          </span>
+          <Toggle
+            defaultChecked={this.props.isPreview}
+            onChange={this.togglePreview}
+          />
+        </label>
       </div>
     )
   }
