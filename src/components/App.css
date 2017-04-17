@@ -17,9 +17,6 @@
   width: 10em;
 }
 
-.text_input {
-  height: calc(100vh - 50px);
-  outline: none;
-  resize: none;
-  width: 100vw;
+.CodeMirror {
+  height: 100%;
 }

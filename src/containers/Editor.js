@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ReactMarkdown from 'react-markdown'
-import TextInput from '../components/TextInput'
+import CodeMirror from 'react-codemirror'
+import 'codemirror/mode/markdown/markdown'
+import 'codemirror/lib/codemirror.css'
 import { getCurrentBuffer, isPreview } from '../store/editor/reducer'
 import { changeBuffer } from '../store/editor/actions'
 
@@ -28,9 +30,10 @@ class Editor extends React.Component {
     } else {
       return (
         <div>
-          <TextInput
-            changeBuffer={this.changeBuffer}
-            currentBuffer={this.props.currentBuffer}
+          <CodeMirror
+            onChange={this.changeBuffer}
+            options={{mode: 'markdown'}}
+            value={this.props.currentBuffer}
           />
         </div>
       )
