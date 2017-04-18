@@ -1,0 +1,33 @@
+.dashboard {
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  min-height: 40px;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+}
+
+.preview-label {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-width: 6em;
+}
+
+.react-datepicker__input-container input {
+  outline: none;
+}
+
+.react-toggle--focus .react-toggle-thumb {
+  box-shadow: none;
+}
+
+input {
+  font-size: 16px;
+}

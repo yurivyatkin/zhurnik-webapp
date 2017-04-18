@@ -6,7 +6,6 @@ import { getCurrentBuffer, isEdited } from '../store/editor/reducer'
 import store from '../store'
 import Dashboard from '../containers/Dashboard'
 import Editor from '../containers/Editor'
-import './App.css'
 
 class App extends Component {
   onUnload () {

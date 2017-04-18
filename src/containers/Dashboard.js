@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import DateButton from '../components/DateButton'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
@@ -10,6 +11,7 @@ import { getCurrentDate } from '../store/calendar/reducer'
 import { togglePreview } from '../store/editor/actions'
 import { isPreview } from '../store/editor/reducer'
 import notesService from '../services/notes'
+import './Dashboard.css'
 
 class Dashboard extends React.Component {
   constructor (props) {
@@ -49,15 +51,16 @@ class Dashboard extends React.Component {
     return (
       <div className='dashboard'>
         <DatePicker
-          dateFormat='YYYYMMDD'
+          customInput={<DateButton />}
+          dateFormat='MMMM Do YYYY'
           highlightDates={this.nonEmptyDatesInMonth(this.state.month)}
           onChange={this.changeDate}
           onMonthChange={this.handleMonthChange}
           selected={moment(this.props.currentDate, 'YYYYMMDD')}
         />
-        <label>
-          <span className='preview-label'>
-            {this.props.isPreview ? 'Edit' : 'Preview:'}
+        <label className='preview-label'>
+          <span>
+            {this.props.isPreview ? 'Edit:' : 'View:'}
           </span>
           <Toggle
             defaultChecked={this.props.isPreview}

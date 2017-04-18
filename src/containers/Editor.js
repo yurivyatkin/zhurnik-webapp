@@ -6,6 +6,7 @@ import 'codemirror/mode/markdown/markdown'
 import 'codemirror/lib/codemirror.css'
 import { getCurrentBuffer, isPreview } from '../store/editor/reducer'
 import { changeBuffer } from '../store/editor/actions'
+import './Editor.css'
 
 class Editor extends React.Component {
   constructor (props) {
@@ -20,7 +21,7 @@ class Editor extends React.Component {
   render () {
     if (this.props.isPreview) {
       return (
-        <div>
+        <div className='editor'>
           <ReactMarkdown
             className='react_markdown'
             source={this.props.currentBuffer}
@@ -29,7 +30,7 @@ class Editor extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className='editor'>
           <CodeMirror
             onChange={this.changeBuffer}
             options={{mode: 'markdown'}}
