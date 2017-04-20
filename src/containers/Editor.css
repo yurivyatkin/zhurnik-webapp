@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+div.CodeMirror-cursors {
+  visibility: visible;
+}
+
 .editor {
   left: 0;
   padding-bottom: 4px;
